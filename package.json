@@ -1,0 +1,17 @@
+{
+  "name": "electron-toolbox",
+  "version": "1.0.0",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
+  },
+  "description": "toolbox for all OS",
+  "author": "BearGrass",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^33.2.1"
+  }
+}
