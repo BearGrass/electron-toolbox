@@ -1,0 +1,26 @@
+#app {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+/* 重置基础样式 */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* 页面基础样式 */
+.page {
+    padding: 20px;
+    height: 100%;
+}

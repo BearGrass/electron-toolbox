@@ -6,7 +6,7 @@
     "start": "electron ."
   },
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^1.7.8"
   },
   "description": "toolbox for all OS",
   "author": "BearGrass",

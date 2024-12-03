@@ -1,9 +1,23 @@
-const information = document.getElementById('info')
-information.innerText = `本应用正在使用 Chrome (v${versions.chrome()}), Node.js (v${versions.node()}), 和 Electron (v${versions.electron()})`
+const { router  } = require('./scripts/router');
+const { sidebar } = require('./scripts/sidebar');
+const { themeManager } = require('./scripts/theme-manager');
 
-const  print_ping = async () => {
-    const response = await versions.ping()
-    console.log(response) // 打印 'pong'
-  }
-  
-print_ping()
+// console.log('renderer.js');
+
+// 初始化应用
+function initializeApp() {
+    // 初始化路由
+    router.addRoute('#/', 'home');
+    router.addRoute('#/about', 'about');
+    
+    // 初始化主题
+    // themeManager.init();
+    
+    // 初始化侧边栏
+    sidebar.init();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // init app
+    initializeApp();
+});
