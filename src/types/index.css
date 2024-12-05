@@ -28,102 +28,53 @@ button:hover {
     background-color: #2980b9;
 }
 
-#protocol_input {
-    /* 基本尺寸和间距 */
-    width: 250px;
-    padding: 10px 15px;
-    margin: 10px 0;
-    
-    /* 字体设置 */
-    font-size: 14px;
-    font-family: Arial, sans-serif;
-    
-    /* 边框和圆角 */
-    border: 2px solid #e0e0e0;
-    border-radius: 6px;
-    
-    /* 背景和文本颜色 */
-    background-color: white;
-    color: #333;
-    
-    /* 平滑过渡效果 */
-    transition: all 0.3s ease;
-    
-    /* 移除默认outline */
-    outline: none;
-}
-
-/* 悬停状态 */
-#protocol_input:hover {
-    border-color: #bdbdbd;
-}
-
-/* 焦点状态 */
-#protocol_input:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
-}
-
-/* placeholder样式 */
-#protocol_input::placeholder {
-    color: #999;
-    opacity: 1; /* Firefox */
-}
-
-/* 禁用状态 */
-#protocol_input:disabled {
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
     background-color: #f5f5f5;
-    border-color: #ddd;
-    cursor: not-allowed;
-}
-
-/* 选中文本的样式 */
-#protocol_input::selection {
-    background-color: #3498db;
-    color: white;
-}
-
-text#protocol_output {
-    display: inline-block; /* 改为 inline-block */
-    margin: 20px 0;
-    padding: 15px;
-    background-color: white;
     border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#protocol_input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
     border: 1px solid #ddd;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    
-    /* 等宽字体 */
-    font-family: Consolas, Monaco, 'Courier New', monospace;
-    font-size: 14px;
-    line-height: 2.0;
-    
-    /* 保留空格和换行，允许自动换行 */
-    white-space: pre-wrap;       /* CSS3 */
-    word-wrap: break-word;      /* IE */ 
-    
-    /* 最小和最大宽度限制 */
-    min-width: 300px;
-    max-width: 100%;
-    
-    /* 超出部分显示滚动条 */
-    max-height: 600px;
-    overflow-y: auto;
-}
-
-/* 滚动条样式 */
-text#protocol_output::-webkit-scrollbar {
-    width: 8px;
-}
-
-text#protocol_output::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-text#protocol_output::-webkit-scrollbar-thumb {
-    background: #888;
     border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
 }
 
-text#protocol_output::-webkit-scrollbar-thumb:hover {
-    background: #555;
+#protocol {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#protocol:hover {
+    background-color: #45a049;
+}
+
+#protocol:active {
+    transform: translateY(1px);
+}
+
+#protocol_output {
+    display: block;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-height: 100px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: monospace;
 }

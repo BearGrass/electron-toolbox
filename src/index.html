@@ -10,11 +10,11 @@
   <body>
     <h1>Protocol format generater</h1>
     <!-- <input type="text" id="input" placeholder="Enter your name"> -->
-    <input type="text" id="protocol_input" placeholder="输入想要生成的协议">
-    <button id="protocol">生成报文</button>
+     <form action="index.html" method="post">
+        <input type="text" id="protocol_input" placeholder="输入想要生成的协议">
+        <button type="submit" id="protocol">生成报文</button>
+        <div id="protocol_output"></div>
+    </form>
     <script src="scripts/protocol.js"></script>
-    <br>
-    <text id="protocol_output"></text>
-    <br>
   </body>
 </html>
