@@ -5,8 +5,10 @@ const path = require('path')
 
 app.on('ready', () => {
     const mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1024,
+        height: 960,
+        autoHideMenuBar: true, // 自动隐藏菜单栏
+        frame: true,  // 保留窗口边框
         webPreferences: {
             nodeIntegration: true,
             // preload

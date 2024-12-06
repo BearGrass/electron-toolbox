@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // 初始化：确保工具箱默认是收起的
 document.addEventListener('DOMContentLoaded', function () {
+    loadContent('pages/home.html');
     const toolsDropdown = document.querySelector('.tools-dropdown');
     toolsDropdown.classList.remove('show');
 });
@@ -23,11 +24,17 @@ document.addEventListener('DOMContentLoaded', function () {
 // 侧边栏按钮点击处理
 document.querySelectorAll('.sidebar-btn').forEach(btn => {
     btn.addEventListener('click', function () {
+        const page = this.dataset.page;  // 新增：获取页面标识
+
         // 如果点击的不是工具箱按钮，收起工具箱下拉菜单
-        if (this.dataset.page !== 'tools') {
+        if (page !== 'tools') {
             document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active'));
             document.querySelector('.tools-dropdown').classList.remove('show');
             this.classList.add('active');
+
+            // 新增：加载对应页面内容
+            const pagePath = `pages/${page}.html`;
+            loadContent(pagePath);
             return;
         }
 
@@ -70,7 +77,7 @@ function loadContent(pageUrl) {
         .then(html => {
             const content = document.getElementById('content');
             content.innerHTML = html;
-            
+
             // 加载对应的 JavaScript 文件
             // 如果文件不存在则不加载
             const pageScript = document.createElement('script');
