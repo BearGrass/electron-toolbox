@@ -1,0 +1,74 @@
+[
+  {
+    "device": "ppk-1",
+    "table_entries": [
+      {
+        "table": "shb_tbl",
+        "match": {
+        },
+        "action": "unicast",
+        "port": 20, // 假设从3端口转发出去
+        "priority": 9
+      },
+      {
+        "table": "gbc_exact",
+        "match": {
+          "hdr.gbc.stationid": [
+            "108"  //triangle
+          ],
+          "hdr.gbc.geoAreaPosLon": [
+            "8928797" 
+          ],
+          "hdr.gbc.geoAreaPosLat": [
+            "2609654" 
+          ],
+          "hdr.gbc.disa": [
+            "1000"  // ldm
+          ],
+          "hdr.gbc.disb": [
+            "1000"  //  sdm
+          ]
+        },
+        "action": "unicast",
+        "port": 3, // 假设从3端口转发出去
+        "priority": 9
+      },
+      {
+        "table": "gbc_exact",
+        "match": {
+          "hdr.gbc.stationid": [
+            "107"  //circle
+          ],
+          "hdr.gbc.geoAreaPosLon": [
+            "8928922" 
+          ],
+          "hdr.gbc.geoAreaPosLat": [
+            "2609567" 
+          ],
+          "hdr.gbc.disa": [
+            "1100"  // ldm
+          ],
+          "hdr.gbc.disb": [
+            "1100"  //  sdm
+          ]
+        },
+        "action": "multicast",
+        "grpid": 1, // 假设组播组是1号 从4 5端口转发
+        "priority": 9
+      }
+    ],
+    "multicast_group_entries": [
+    {
+      "grpid": 1,
+      "replicas": [
+        {
+          "egress_port": 4
+        },
+        {
+          "egress_port": 5
+        }
+      ]
+    }
+    ]
+  }  
+]

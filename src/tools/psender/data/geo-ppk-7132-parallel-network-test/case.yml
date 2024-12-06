@@ -1,0 +1,34 @@
+cases:
+  - id: 1
+    ether:
+      src: "48:21:0b:34:bf:c2"
+      dst: "01:0c:cd:01:00:11"
+      type: 0x8947
+    geo:
+      ht: 0x0004
+    gbc:
+      stationid: 108
+      geoAreaPosLon: 8928797
+      geoAreaPosLat: 2609654
+      disa: 1000
+      disb: 1000
+    setting:
+      count: 1
+      inter: 0
+  - id: 2
+    ether:
+      src: "48:21:0b:34:bf:c2"
+      dst: "01:0c:cd:01:00:11"
+      type: 0x8947
+    geo:
+      ht: 0x0004
+    gbc:
+      stationid: 107
+      geoAreaPosLon: 8928922
+      geoAreaPosLat: 2609567
+      disa: 1100
+      disb: 1100
+    setting:
+      count: 1
+      inter: 0
+
