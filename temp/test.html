@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>报文ASCII图生成</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .protocol-select {
+            margin-bottom: 20px;
+        }
+        .protocol-type {
+            margin-bottom: 10px;
+        }
+        .custom-protocol {
+            margin-top: 10px;
+        }
+        .protocol-field {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            min-height: 50px;
+        }
+        button {
+            padding: 5px 10px;
+        }
+        select, input {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>报文ASCII图生成</h1>
+    
+    <h2>协议选择</h2>
+    
+    <div class="protocol-select">
+        <div class="protocol-type">
+            <input type="radio" name="protocolType" id="predefined" value="predefined" checked>
+            <label for="predefined">已有协议</label>
+            
+            <input type="radio" name="protocolType" id="custom" value="custom">
+            <label for="custom">自定义协议</label>
+        </div>
+
+        <div id="predefinedProtocol">
+            <select id="protocolSelect">
+                <option value="tcp">TCP</option>
+                <option value="udp">UDP</option>
+                <option value="ip">IP</option>
+            </select>
+        </div>
+
+        <div id="customProtocol" class="custom-protocol" style="display: none;">
+            <button onclick="addProtocolField()">添加字段</button>
+            <div id="protocolFields"></div>
+        </div>
+    </div>
+
+    <button onclick="generateOutput()">提交</button>
+    <div class="output" id="output"></div>
+
+    <script>
+        document.querySelectorAll('input[name="protocolType"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.getElementById('predefinedProtocol').style.display = 
+                    this.value === 'predefined' ? 'block' : 'none';
+                document.getElementById('customProtocol').style.display = 
+                    this.value === 'custom' ? 'block' : 'none';
+            });
+        });
+
+        function addProtocolField() {
+            const div = document.createElement('div');
+            div.className = 'protocol-field';
+            
+            const descInput = document.createElement('input');
+            descInput.type = 'text';
+            descInput.placeholder = '报文头描述';
+            
+            const bitInput = document.createElement('input');
+            bitInput.type = 'number';
+            bitInput.placeholder = '报文头bit数';
+            
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = '删除';
+            deleteBtn.onclick = function() {
+                div.remove();
+            };
+            
+            div.appendChild(descInput);
+            div.appendChild(bitInput);
+            div.appendChild(deleteBtn);
+            
+            document.getElementById('protocolFields').appendChild(div);
+        }
+
+        function generateOutput() {
+            const protocolType = document.querySelector('input[name="protocolType"]:checked').value;
+            let output = '';
+            
+            if (protocolType === 'predefined') {
+                output = document.getElementById('protocolSelect').value;
+            } else {
+                const fields = document.querySelectorAll('.protocol-field');
+                const parts = [];
+                
+                fields.forEach(field => {
+                    const desc = field.children[0].value;
+                    const bits = field.children[1].value;
+                    if (desc && bits) {
+                        parts.push(`${desc}(${bits}bits)`);
+                    }
+                });
+                
+                output = parts.join(' | ');
+            }
+            
+            document.getElementById('output').textContent = output;
+        }
+    </script>
+</body>
+</html>

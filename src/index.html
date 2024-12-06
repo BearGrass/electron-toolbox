@@ -1,20 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <link rel="stylesheet" href="types/index.css">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Protocol format generater</h1>
-    <!-- <input type="text" id="input" placeholder="Enter your name"> -->
-     <form action="index.html" method="post">
+    <title>报文ASCII图生成</title>
+</head>
+
+<body>
+    <h1>报文ASCII图生成</h1>
+    
+    <h2>协议选择</h2>
+
+    <div class="protocol-select">
+        <div class="protocol-type">
+            <input type="radio" name="protocolType" id="predefined" value="predefined" checked>
+            <label for="predefined">已有协议</label>
+            
+            <input type="radio" name="protocolType" id="custom" value="custom">
+            <label for="custom">自定义协议</label>
+        </div>
+
+        <div id="predefinedProtocol">
+            <select id="protocolSelect">
+                <option value="tcp">TCP</option>
+                <option value="udp">UDP</option>
+                <option value="ip">IP</option>
+            </select>
+        </div>
+
+        <div id="customProtocol" class="custom-protocol" style="display: none;">
+            <button id="addProtocolField">添加字段</button>
+            <div id="protocolFields"></div>
+        </div>
+    </div>
+
+    <button id="generateOutput">生成</button>
+    <div class="protocol-output" id="protocol-output"></div>
+
+    <!-- <h1>Protocol format generater</h1>
+    <h2>自定义报文头设计</h2>
+    <div class="button-group">
+        <button id="add-field">添加字段</button>
+        <button id="submit-btn">提交</button>
+    </div>
+    <div id="fields" class="field-container">
+    </div>
+    <h2>报文头生成</h2>
+    <form action="index.html" method="post">
         <input type="text" id="protocol_input" placeholder="输入想要生成的协议">
         <button type="submit" id="protocol">生成报文</button>
         <div id="protocol_output"></div>
-    </form>
+    </form> -->
     <script src="scripts/protocol.js"></script>
-  </body>
+</body>
+
 </html>

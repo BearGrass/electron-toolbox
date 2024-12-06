@@ -38,7 +38,7 @@ app.on('ready', () => {
 
             pythonProcess.stdout.on('data', (data) => {
                 const stdout = data.toString()
-                console.log('Python output:', stdout)
+                console.log('Python output:\n', stdout)
                 output += stdout
             })
 
@@ -48,24 +48,22 @@ app.on('ready', () => {
                 error += stderr
             })
 
-            pythonProcess.on('close', (code) => {
-                console.log('Python exit code:', code)
-                if (code !== 0) {
-                    console.error('Python failed')
-                }
-            })
-
-            pythonProcess.on('error', (err) => {
-                console.error('python err:', err)
-                error += err.toString()
-            })
-
             return new Promise((resolve, reject) => {
                 pythonProcess.on('close', (code) => {
                     if (code === 0) {
-                        resolve({ output, error })
+                        console.log('Python process finished')
+                        console.log('Final output:', output) // 调试用
+
+                        // 确保返回正确的对象结构
+                        const result = {
+                            output_text: output,
+                            error: error
+                        }
+
+                        console.log('Returning result:', result) // 调试用
+                        resolve(result)
                     } else {
-                        reject({ output, error })
+                        reject({ output_text: output, error: error })
                     }
                 })
             })
