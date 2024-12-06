@@ -1,0 +1,32 @@
+<body>
+    <h1>报文ASCII图生成</h1>
+
+    <h2>协议选择</h2>
+
+    <div class="protocol-select">
+        <div class="protocol-type">
+            <input type="radio" name="protocolType" id="predefined" value="predefined" checked>
+            <label for="predefined">已有协议</label>
+
+            <input type="radio" name="protocolType" id="custom" value="custom">
+            <label for="custom">自定义协议</label>
+        </div>
+
+        <div id="predefinedProtocol">
+            <select id="protocolSelect">
+                <option value="tcp">TCP</option>
+                <option value="udp">UDP</option>
+                <option value="ip">IP</option>
+            </select>
+        </div>
+
+        <div id="customProtocol" class="custom-protocol" style="display: none;">
+            <button id="addProtocolField">添加字段</button>
+            <div id="protocolFields"></div>
+        </div>
+    </div>
+
+    <button id="generateOutput">生成</button>
+    <div class="protocol-output" id="protocol-output"></div>
+    <!-- <script src="scripts/protocol.js"></script> -->
+</body>
